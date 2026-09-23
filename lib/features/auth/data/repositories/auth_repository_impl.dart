@@ -10,6 +10,14 @@ import 'package:resgo/features/auth/data/models/responses/login_response/login_r
 import 'package:resgo/features/auth/data/models/responses/register_response/register_response.dart';
 import 'package:resgo/features/auth/domain/repositories/auth_repository.dart';
 
+// Concrete implementation of AuthRepository.
+/// 
+/// This is the ONLY place that knows about:
+/// - Dio
+/// - API endpoints
+/// - JSON parsing
+/// - SessionService (saving token)
+
 class AuthRepositoryImpl extends BaseRemoteSource implements AuthRepository {
   final SessionService sessionService;
 

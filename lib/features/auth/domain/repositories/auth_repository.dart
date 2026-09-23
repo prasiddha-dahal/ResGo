@@ -4,6 +4,11 @@ import 'package:resgo/features/auth/data/models/requests/register_request/regist
 import 'package:resgo/features/auth/data/models/responses/login_response/login_response.dart';
 import 'package:resgo/features/auth/data/models/responses/register_response/register_response.dart';
 
+/// Domain contract for authentication.
+/// 
+/// The presentation layer depends ONLY on this abstract class.
+/// It has no idea about Dio, JSON, or SharedPreferences
+
 abstract interface class AuthRepository {
   EitherResponse<RegisterResponse> register(RegisterRequest register);
   EitherResponse<LoginResponse> login(LoginRequest register);
