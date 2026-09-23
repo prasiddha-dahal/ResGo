@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:resgo/core/router/app_routes.dart';
 import 'package:resgo/features/auth/presentation/screens/login_screen.dart';
 import 'package:resgo/features/auth/presentation/screens/register_screen.dart';
+import 'package:resgo/features/splash/presentation/screen/splash_screen.dart';
 
 /// Temporary placeholder screens – we will replace them feature by feature.
 class PlaceholderScreen extends StatelessWidget {
@@ -23,7 +24,7 @@ final appRouter = GoRouter(
   routes: [
     GoRoute(
       path: AppRoutes.splash,
-      builder: (context, state) => const PlaceholderScreen(title: 'Splash'),
+      builder: (context, state) => const SplashScreen(),
     ),
     GoRoute(
       path: AppRoutes.login,
