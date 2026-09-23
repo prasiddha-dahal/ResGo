@@ -10,7 +10,7 @@ import 'package:resgo/features/auth/data/models/responses/register_response/regi
 /// It has no idea about Dio, JSON, or SharedPreferences
 
 abstract interface class AuthRepository {
-  EitherResponse<RegisterResponse> register(RegisterRequest register);
-  EitherResponse<LoginResponse> login(LoginRequest register);
+  EitherResponse<RegisterResponse> register(RegisterRequest registerRequest);
+  EitherResponse<LoginResponse> login(LoginRequest loginRequest);
   EitherResponse<void> logout();
 }
