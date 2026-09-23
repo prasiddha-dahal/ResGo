@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:resgo/core/router/app_routes.dart';
+import 'package:resgo/features/auth/presentation/screens/login_screen.dart';
+import 'package:resgo/features/auth/presentation/screens/register_screen.dart';
 
 /// Temporary placeholder screens – we will replace them feature by feature.
 class PlaceholderScreen extends StatelessWidget {
@@ -25,11 +27,11 @@ final appRouter = GoRouter(
     ),
     GoRoute(
       path: AppRoutes.login,
-      builder: (context, state) => const PlaceholderScreen(title: 'Login'),
+      builder: (context, state) => const LoginScreen(),
     ),
     GoRoute(
       path: AppRoutes.register,
-      builder: (context, state) => const PlaceholderScreen(title: 'Register'),
+      builder: (context, state) => const RegisterScreen(),
     ),
     GoRoute(
       path: AppRoutes.home,
