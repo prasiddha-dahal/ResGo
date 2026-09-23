@@ -1,0 +1,11 @@
+import 'package:resgo/core/typedef/typedefs.dart';
+import 'package:resgo/features/auth/data/models/requests/login_request/login_request.dart';
+import 'package:resgo/features/auth/data/models/requests/register_request/register_request.dart';
+import 'package:resgo/features/auth/data/models/responses/login_response/login_response.dart';
+import 'package:resgo/features/auth/data/models/responses/register_response/register_response.dart';
+
+abstract interface class AuthRepository {
+  EitherResponse<RegisterResponse> register(RegisterRequest register);
+  EitherResponse<LoginResponse> login(LoginRequest register);
+  EitherResponse<void> logout();
+}
