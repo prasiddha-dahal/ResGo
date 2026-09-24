@@ -197,7 +197,9 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                       style: AppTextStyles.bodyMedium,
                     ),
                     GestureDetector(
-                      onTap: () => context.pop(),
+                      onTap: (){
+                        context.replace(AppRoutes.login);
+                      },
                       child: Text(
                         'Login',
                         style: AppTextStyles.bodyMedium.copyWith(
