@@ -72,7 +72,7 @@ class _$CategoriesResponseCopyWithImpl<$Res>
 /// Create a copy of CategoriesResponse
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? success = null,Object? data = null,}) {
-  return _then(CategoriesResponse.CategoryResponse(
+  return _then(CategoriesResponse(
 success: null == success ? _self.success : success // ignore: cast_nullable_to_non_nullable
 as bool,data: null == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
 as List<Category>,
@@ -96,11 +96,11 @@ extension CategoriesResponsePatterns on CategoriesResponse {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _CategoriesResponse value)?  CategoryResponse,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _CategoriesResponse value)?  $default,{required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case _CategoriesResponse() when CategoryResponse != null:
-return CategoryResponse(_that);case _:
+case _CategoriesResponse() when $default != null:
+return $default(_that);case _:
   return orElse();
 
 }
@@ -118,11 +118,11 @@ return CategoryResponse(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _CategoriesResponse value)  CategoryResponse,}){
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _CategoriesResponse value)  $default,){
 final _that = this;
 switch (_that) {
 case _CategoriesResponse():
-return CategoryResponse(_that);case _:
+return $default(_that);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -139,11 +139,11 @@ return CategoryResponse(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _CategoriesResponse value)?  CategoryResponse,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _CategoriesResponse value)?  $default,){
 final _that = this;
 switch (_that) {
-case _CategoriesResponse() when CategoryResponse != null:
-return CategoryResponse(_that);case _:
+case _CategoriesResponse() when $default != null:
+return $default(_that);case _:
   return null;
 
 }
@@ -160,10 +160,10 @@ return CategoryResponse(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( bool success,  List<Category> data)?  CategoryResponse,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool success,  List<Category> data)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case _CategoriesResponse() when CategoryResponse != null:
-return CategoryResponse(_that.success,_that.data);case _:
+case _CategoriesResponse() when $default != null:
+return $default(_that.success,_that.data);case _:
   return orElse();
 
 }
@@ -181,10 +181,10 @@ return CategoryResponse(_that.success,_that.data);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( bool success,  List<Category> data)  CategoryResponse,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool success,  List<Category> data)  $default,) {final _that = this;
 switch (_that) {
 case _CategoriesResponse():
-return CategoryResponse(_that.success,_that.data);case _:
+return $default(_that.success,_that.data);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -201,10 +201,10 @@ return CategoryResponse(_that.success,_that.data);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( bool success,  List<Category> data)?  CategoryResponse,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool success,  List<Category> data)?  $default,) {final _that = this;
 switch (_that) {
-case _CategoriesResponse() when CategoryResponse != null:
-return CategoryResponse(_that.success,_that.data);case _:
+case _CategoriesResponse() when $default != null:
+return $default(_that.success,_that.data);case _:
   return null;
 
 }
@@ -252,7 +252,7 @@ int get hashCode {
 
 @override
 String toString() {
-    return 'CategoriesResponse.CategoryResponse(success: $success, data: $data)';
+    return 'CategoriesResponse(success: $success, data: $data)';
 }
 
 

@@ -6,7 +6,7 @@ part 'categories_response.g.dart';
 
 @freezed
 abstract class CategoriesResponse with _$CategoriesResponse {
-  const factory CategoryResponse({
+  const factory CategoriesResponse({
     required bool success,
     required List<Category> data
   }) = _CategoriesResponse;
