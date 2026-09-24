@@ -3,6 +3,8 @@ import 'package:go_router/go_router.dart';
 import 'package:resgo/core/router/app_routes.dart';
 import 'package:resgo/features/auth/presentation/screens/login_screen.dart';
 import 'package:resgo/features/auth/presentation/screens/register_screen.dart';
+import 'package:resgo/features/product/presentation/screens/home_screen.dart';
+import 'package:resgo/features/product/presentation/screens/product_detail_screen.dart';
 import 'package:resgo/features/splash/presentation/screen/splash_screen.dart';
 
 /// Temporary placeholder screens – we will replace them feature by feature.
@@ -36,13 +38,14 @@ final appRouter = GoRouter(
     ),
     GoRoute(
       path: AppRoutes.home,
-      builder: (context, state) => const PlaceholderScreen(title: 'Home'),
+      builder: (context, state) => const HomeScreen(),
     ),
     GoRoute(
+      name: 'productDetail',
       path: AppRoutes.productDetail,
       builder: (context, state) {
-        final id = state.pathParameters['id'] ?? '0';
-        return PlaceholderScreen(title: 'Product $id');
+        final id = int.tryParse(state.pathParameters['id'] ?? '') ?? 0;
+        return ProductDetailScreen(productId: id);
       },
     ),
     GoRoute(
