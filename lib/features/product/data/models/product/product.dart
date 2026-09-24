@@ -12,7 +12,7 @@ abstract class Product with _$Product {
     required double price,
     @JsonKey(name: "discount_percent") required String discountPercent,
     @JsonKey(name: "discount_amount") required double discountAmount,
-    @JsonKey(name: "discount_price") required double discountPrice,
+    @JsonKey(name: "discounted_price") required double discountPrice,
     required String image,
     required String category,
     @JsonKey(name: "is_featured") bool? isFeatured,

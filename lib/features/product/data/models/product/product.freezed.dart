@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$Product {
 
- int get id; String get title; String get description; double get price;@JsonKey(name: "discount_percent") String get discountPercent;@JsonKey(name: "discount_amount") double get discountAmount;@JsonKey(name: "discount_price") double get discountPrice; String get image; String get category;@JsonKey(name: "is_featured") bool? get isFeatured;@JsonKey(name: "featured_order") int? get featuredOrder;@JsonKey(name: "featured_image") String? get featuredImage;
+ int get id; String get title; String get description; double get price;@JsonKey(name: "discount_percent") String get discountPercent;@JsonKey(name: "discount_amount") double get discountAmount;@JsonKey(name: "discounted_price") double get discountPrice; String get image; String get category;@JsonKey(name: "is_featured") bool? get isFeatured;@JsonKey(name: "featured_order") int? get featuredOrder;@JsonKey(name: "featured_image") String? get featuredImage;
 /// Create a copy of Product
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -54,7 +54,7 @@ abstract mixin class $ProductCopyWith<$Res>  {
   factory $ProductCopyWith(Product value, $Res Function(Product) _then) = _$ProductCopyWithImpl;
 @useResult
 $Res call({
- int id, String title, String description, double price,@JsonKey(name: "discount_percent") String discountPercent,@JsonKey(name: "discount_amount") double discountAmount,@JsonKey(name: "discount_price") double discountPrice, String image, String category,@JsonKey(name: "is_featured") bool? isFeatured,@JsonKey(name: "featured_order") int? featuredOrder,@JsonKey(name: "featured_image") String? featuredImage
+ int id, String title, String description, double price,@JsonKey(name: "discount_percent") String discountPercent,@JsonKey(name: "discount_amount") double discountAmount,@JsonKey(name: "discounted_price") double discountPrice, String image, String category,@JsonKey(name: "is_featured") bool? isFeatured,@JsonKey(name: "featured_order") int? featuredOrder,@JsonKey(name: "featured_image") String? featuredImage
 });
 
 
@@ -170,7 +170,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  String title,  String description,  double price, @JsonKey(name: "discount_percent")  String discountPercent, @JsonKey(name: "discount_amount")  double discountAmount, @JsonKey(name: "discount_price")  double discountPrice,  String image,  String category, @JsonKey(name: "is_featured")  bool? isFeatured, @JsonKey(name: "featured_order")  int? featuredOrder, @JsonKey(name: "featured_image")  String? featuredImage)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  String title,  String description,  double price, @JsonKey(name: "discount_percent")  String discountPercent, @JsonKey(name: "discount_amount")  double discountAmount, @JsonKey(name: "discounted_price")  double discountPrice,  String image,  String category, @JsonKey(name: "is_featured")  bool? isFeatured, @JsonKey(name: "featured_order")  int? featuredOrder, @JsonKey(name: "featured_image")  String? featuredImage)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Product() when $default != null:
 return $default(_that.id,_that.title,_that.description,_that.price,_that.discountPercent,_that.discountAmount,_that.discountPrice,_that.image,_that.category,_that.isFeatured,_that.featuredOrder,_that.featuredImage);case _:
@@ -191,7 +191,7 @@ return $default(_that.id,_that.title,_that.description,_that.price,_that.discoun
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  String title,  String description,  double price, @JsonKey(name: "discount_percent")  String discountPercent, @JsonKey(name: "discount_amount")  double discountAmount, @JsonKey(name: "discount_price")  double discountPrice,  String image,  String category, @JsonKey(name: "is_featured")  bool? isFeatured, @JsonKey(name: "featured_order")  int? featuredOrder, @JsonKey(name: "featured_image")  String? featuredImage)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  String title,  String description,  double price, @JsonKey(name: "discount_percent")  String discountPercent, @JsonKey(name: "discount_amount")  double discountAmount, @JsonKey(name: "discounted_price")  double discountPrice,  String image,  String category, @JsonKey(name: "is_featured")  bool? isFeatured, @JsonKey(name: "featured_order")  int? featuredOrder, @JsonKey(name: "featured_image")  String? featuredImage)  $default,) {final _that = this;
 switch (_that) {
 case _Product():
 return $default(_that.id,_that.title,_that.description,_that.price,_that.discountPercent,_that.discountAmount,_that.discountPrice,_that.image,_that.category,_that.isFeatured,_that.featuredOrder,_that.featuredImage);case _:
@@ -211,7 +211,7 @@ return $default(_that.id,_that.title,_that.description,_that.price,_that.discoun
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  String title,  String description,  double price, @JsonKey(name: "discount_percent")  String discountPercent, @JsonKey(name: "discount_amount")  double discountAmount, @JsonKey(name: "discount_price")  double discountPrice,  String image,  String category, @JsonKey(name: "is_featured")  bool? isFeatured, @JsonKey(name: "featured_order")  int? featuredOrder, @JsonKey(name: "featured_image")  String? featuredImage)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  String title,  String description,  double price, @JsonKey(name: "discount_percent")  String discountPercent, @JsonKey(name: "discount_amount")  double discountAmount, @JsonKey(name: "discounted_price")  double discountPrice,  String image,  String category, @JsonKey(name: "is_featured")  bool? isFeatured, @JsonKey(name: "featured_order")  int? featuredOrder, @JsonKey(name: "featured_image")  String? featuredImage)?  $default,) {final _that = this;
 switch (_that) {
 case _Product() when $default != null:
 return $default(_that.id,_that.title,_that.description,_that.price,_that.discountPercent,_that.discountAmount,_that.discountPrice,_that.image,_that.category,_that.isFeatured,_that.featuredOrder,_that.featuredImage);case _:
@@ -226,7 +226,7 @@ return $default(_that.id,_that.title,_that.description,_that.price,_that.discoun
 @JsonSerializable()
 
 class _Product implements Product {
-  const _Product({required this.id, required this.title, required this.description, required this.price, @JsonKey(name: "discount_percent") required this.discountPercent, @JsonKey(name: "discount_amount") required this.discountAmount, @JsonKey(name: "discount_price") required this.discountPrice, required this.image, required this.category, @JsonKey(name: "is_featured") this.isFeatured, @JsonKey(name: "featured_order") this.featuredOrder, @JsonKey(name: "featured_image") this.featuredImage});
+  const _Product({required this.id, required this.title, required this.description, required this.price, @JsonKey(name: "discount_percent") required this.discountPercent, @JsonKey(name: "discount_amount") required this.discountAmount, @JsonKey(name: "discounted_price") required this.discountPrice, required this.image, required this.category, @JsonKey(name: "is_featured") this.isFeatured, @JsonKey(name: "featured_order") this.featuredOrder, @JsonKey(name: "featured_image") this.featuredImage});
   factory _Product.fromJson(Map<String, dynamic> json) => _$ProductFromJson(json);
 
 @override final  int id;
@@ -235,7 +235,7 @@ class _Product implements Product {
 @override final  double price;
 @override@JsonKey(name: "discount_percent") final  String discountPercent;
 @override@JsonKey(name: "discount_amount") final  double discountAmount;
-@override@JsonKey(name: "discount_price") final  double discountPrice;
+@override@JsonKey(name: "discounted_price") final  double discountPrice;
 @override final  String image;
 @override final  String category;
 @override@JsonKey(name: "is_featured") final  bool? isFeatured;
@@ -277,7 +277,7 @@ abstract mixin class _$ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
   factory _$ProductCopyWith(_Product value, $Res Function(_Product) _then) = __$ProductCopyWithImpl;
 @override @useResult
 $Res call({
- int id, String title, String description, double price,@JsonKey(name: "discount_percent") String discountPercent,@JsonKey(name: "discount_amount") double discountAmount,@JsonKey(name: "discount_price") double discountPrice, String image, String category,@JsonKey(name: "is_featured") bool? isFeatured,@JsonKey(name: "featured_order") int? featuredOrder,@JsonKey(name: "featured_image") String? featuredImage
+ int id, String title, String description, double price,@JsonKey(name: "discount_percent") String discountPercent,@JsonKey(name: "discount_amount") double discountAmount,@JsonKey(name: "discounted_price") double discountPrice, String image, String category,@JsonKey(name: "is_featured") bool? isFeatured,@JsonKey(name: "featured_order") int? featuredOrder,@JsonKey(name: "featured_image") String? featuredImage
 });
 
 
