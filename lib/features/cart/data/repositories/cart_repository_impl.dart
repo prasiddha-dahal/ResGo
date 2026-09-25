@@ -54,7 +54,7 @@ class CartRepositoryImpl extends BaseRemoteSource implements CartRepository {
       final response = await callApi(() async {
         final result = await dio.get(ApiEndpoints.carts);
         final data = result.data as Map<String, dynamic>;
-        if (data['success'] == false) {
+        if (data['success'] == false || data['sucess'] == false) {
           return <Cart>[];
         }
 

@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$Cart {
 
-@JsonKey(name: "cart_id") int get cartId;@JsonKey(name: "product_id") int get productId;@JsonKey(name: "product_name") String get productName;@JsonKey(name: "product_price") double get productPrice;@JsonKey(name: "selling_price") double get sellingPrice;@JsonKey(name: "discount") double get discountPercent;@JsonKey(name: "discount_amt") double get discountAmount;@JsonKey(name: "total_amt") double get totalAmount;@JsonKey(name: "product_image") String get productImage; int get quantity;
+@JsonKey(name: 'cart_id') int get cartId;@JsonKey(name: 'product_id') int get productId;@JsonKey(name: 'product_name') String get productName;@JsonKey(name: 'product_price', fromJson: _toNum) num get productPrice;@JsonKey(name: 'selling_price', fromJson: _toNum) num get sellingPrice; int get quantity; String? get discount;@JsonKey(name: 'discount_amt', fromJson: _toNumNullable) num? get discountAmount;@JsonKey(name: 'total_amt', fromJson: _toNum) num get totalAmount;@JsonKey(name: 'product_image') String? get productImage;
 /// Create a copy of Cart
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -30,20 +30,20 @@ $CartCopyWith<Cart> get copyWith => _$CartCopyWithImpl<Cart>(this as Cart, _$ide
 @override
 bool operator ==(Object other) {
   final _this = this as Cart;
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Cart&&(identical(other.cartId, _this.cartId) || other.cartId == _this.cartId)&&(identical(other.productId, _this.productId) || other.productId == _this.productId)&&(identical(other.productName, _this.productName) || other.productName == _this.productName)&&(identical(other.productPrice, _this.productPrice) || other.productPrice == _this.productPrice)&&(identical(other.sellingPrice, _this.sellingPrice) || other.sellingPrice == _this.sellingPrice)&&(identical(other.discountPercent, _this.discountPercent) || other.discountPercent == _this.discountPercent)&&(identical(other.discountAmount, _this.discountAmount) || other.discountAmount == _this.discountAmount)&&(identical(other.totalAmount, _this.totalAmount) || other.totalAmount == _this.totalAmount)&&(identical(other.productImage, _this.productImage) || other.productImage == _this.productImage)&&(identical(other.quantity, _this.quantity) || other.quantity == _this.quantity));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Cart&&(identical(other.cartId, _this.cartId) || other.cartId == _this.cartId)&&(identical(other.productId, _this.productId) || other.productId == _this.productId)&&(identical(other.productName, _this.productName) || other.productName == _this.productName)&&(identical(other.productPrice, _this.productPrice) || other.productPrice == _this.productPrice)&&(identical(other.sellingPrice, _this.sellingPrice) || other.sellingPrice == _this.sellingPrice)&&(identical(other.quantity, _this.quantity) || other.quantity == _this.quantity)&&(identical(other.discount, _this.discount) || other.discount == _this.discount)&&(identical(other.discountAmount, _this.discountAmount) || other.discountAmount == _this.discountAmount)&&(identical(other.totalAmount, _this.totalAmount) || other.totalAmount == _this.totalAmount)&&(identical(other.productImage, _this.productImage) || other.productImage == _this.productImage));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as Cart;
-  return Object.hash(runtimeType,_this.cartId,_this.productId,_this.productName,_this.productPrice,_this.sellingPrice,_this.discountPercent,_this.discountAmount,_this.totalAmount,_this.productImage,_this.quantity);
+  return Object.hash(runtimeType,_this.cartId,_this.productId,_this.productName,_this.productPrice,_this.sellingPrice,_this.quantity,_this.discount,_this.discountAmount,_this.totalAmount,_this.productImage);
 }
 
 @override
 String toString() {
   final _this = this as Cart;
-  return 'Cart(cartId: ${_this.cartId}, productId: ${_this.productId}, productName: ${_this.productName}, productPrice: ${_this.productPrice}, sellingPrice: ${_this.sellingPrice}, discountPercent: ${_this.discountPercent}, discountAmount: ${_this.discountAmount}, totalAmount: ${_this.totalAmount}, productImage: ${_this.productImage}, quantity: ${_this.quantity})';
+  return 'Cart(cartId: ${_this.cartId}, productId: ${_this.productId}, productName: ${_this.productName}, productPrice: ${_this.productPrice}, sellingPrice: ${_this.sellingPrice}, quantity: ${_this.quantity}, discount: ${_this.discount}, discountAmount: ${_this.discountAmount}, totalAmount: ${_this.totalAmount}, productImage: ${_this.productImage})';
 }
 
 
@@ -54,7 +54,7 @@ abstract mixin class $CartCopyWith<$Res>  {
   factory $CartCopyWith(Cart value, $Res Function(Cart) _then) = _$CartCopyWithImpl;
 @useResult
 $Res call({
-@JsonKey(name: "cart_id") int cartId,@JsonKey(name: "product_id") int productId,@JsonKey(name: "product_name") String productName,@JsonKey(name: "product_price") double productPrice,@JsonKey(name: "selling_price") double sellingPrice,@JsonKey(name: "discount") double discountPercent,@JsonKey(name: "discount_amt") double discountAmount,@JsonKey(name: "total_amt") double totalAmount,@JsonKey(name: "product_image") String productImage, int quantity
+@JsonKey(name: 'cart_id') int cartId,@JsonKey(name: 'product_id') int productId,@JsonKey(name: 'product_name') String productName,@JsonKey(name: 'product_price', fromJson: _toNum) num productPrice,@JsonKey(name: 'selling_price', fromJson: _toNum) num sellingPrice, int quantity, String? discount,@JsonKey(name: 'discount_amt', fromJson: _toNumNullable) num? discountAmount,@JsonKey(name: 'total_amt', fromJson: _toNum) num totalAmount,@JsonKey(name: 'product_image') String? productImage
 });
 
 
@@ -71,19 +71,19 @@ class _$CartCopyWithImpl<$Res>
 
 /// Create a copy of Cart
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? cartId = null,Object? productId = null,Object? productName = null,Object? productPrice = null,Object? sellingPrice = null,Object? discountPercent = null,Object? discountAmount = null,Object? totalAmount = null,Object? productImage = null,Object? quantity = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? cartId = null,Object? productId = null,Object? productName = null,Object? productPrice = null,Object? sellingPrice = null,Object? quantity = null,Object? discount = freezed,Object? discountAmount = freezed,Object? totalAmount = null,Object? productImage = freezed,}) {
   return _then(Cart(
 cartId: null == cartId ? _self.cartId : cartId // ignore: cast_nullable_to_non_nullable
 as int,productId: null == productId ? _self.productId : productId // ignore: cast_nullable_to_non_nullable
 as int,productName: null == productName ? _self.productName : productName // ignore: cast_nullable_to_non_nullable
 as String,productPrice: null == productPrice ? _self.productPrice : productPrice // ignore: cast_nullable_to_non_nullable
-as double,sellingPrice: null == sellingPrice ? _self.sellingPrice : sellingPrice // ignore: cast_nullable_to_non_nullable
-as double,discountPercent: null == discountPercent ? _self.discountPercent : discountPercent // ignore: cast_nullable_to_non_nullable
-as double,discountAmount: null == discountAmount ? _self.discountAmount : discountAmount // ignore: cast_nullable_to_non_nullable
-as double,totalAmount: null == totalAmount ? _self.totalAmount : totalAmount // ignore: cast_nullable_to_non_nullable
-as double,productImage: null == productImage ? _self.productImage : productImage // ignore: cast_nullable_to_non_nullable
-as String,quantity: null == quantity ? _self.quantity : quantity // ignore: cast_nullable_to_non_nullable
-as int,
+as num,sellingPrice: null == sellingPrice ? _self.sellingPrice : sellingPrice // ignore: cast_nullable_to_non_nullable
+as num,quantity: null == quantity ? _self.quantity : quantity // ignore: cast_nullable_to_non_nullable
+as int,discount: freezed == discount ? _self.discount : discount // ignore: cast_nullable_to_non_nullable
+as String?,discountAmount: freezed == discountAmount ? _self.discountAmount : discountAmount // ignore: cast_nullable_to_non_nullable
+as num?,totalAmount: null == totalAmount ? _self.totalAmount : totalAmount // ignore: cast_nullable_to_non_nullable
+as num,productImage: freezed == productImage ? _self.productImage : productImage // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 
@@ -168,10 +168,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: "cart_id")  int cartId, @JsonKey(name: "product_id")  int productId, @JsonKey(name: "product_name")  String productName, @JsonKey(name: "product_price")  double productPrice, @JsonKey(name: "selling_price")  double sellingPrice, @JsonKey(name: "discount")  double discountPercent, @JsonKey(name: "discount_amt")  double discountAmount, @JsonKey(name: "total_amt")  double totalAmount, @JsonKey(name: "product_image")  String productImage,  int quantity)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: 'cart_id')  int cartId, @JsonKey(name: 'product_id')  int productId, @JsonKey(name: 'product_name')  String productName, @JsonKey(name: 'product_price', fromJson: _toNum)  num productPrice, @JsonKey(name: 'selling_price', fromJson: _toNum)  num sellingPrice,  int quantity,  String? discount, @JsonKey(name: 'discount_amt', fromJson: _toNumNullable)  num? discountAmount, @JsonKey(name: 'total_amt', fromJson: _toNum)  num totalAmount, @JsonKey(name: 'product_image')  String? productImage)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Cart() when $default != null:
-return $default(_that.cartId,_that.productId,_that.productName,_that.productPrice,_that.sellingPrice,_that.discountPercent,_that.discountAmount,_that.totalAmount,_that.productImage,_that.quantity);case _:
+return $default(_that.cartId,_that.productId,_that.productName,_that.productPrice,_that.sellingPrice,_that.quantity,_that.discount,_that.discountAmount,_that.totalAmount,_that.productImage);case _:
   return orElse();
 
 }
@@ -189,10 +189,10 @@ return $default(_that.cartId,_that.productId,_that.productName,_that.productPric
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: "cart_id")  int cartId, @JsonKey(name: "product_id")  int productId, @JsonKey(name: "product_name")  String productName, @JsonKey(name: "product_price")  double productPrice, @JsonKey(name: "selling_price")  double sellingPrice, @JsonKey(name: "discount")  double discountPercent, @JsonKey(name: "discount_amt")  double discountAmount, @JsonKey(name: "total_amt")  double totalAmount, @JsonKey(name: "product_image")  String productImage,  int quantity)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: 'cart_id')  int cartId, @JsonKey(name: 'product_id')  int productId, @JsonKey(name: 'product_name')  String productName, @JsonKey(name: 'product_price', fromJson: _toNum)  num productPrice, @JsonKey(name: 'selling_price', fromJson: _toNum)  num sellingPrice,  int quantity,  String? discount, @JsonKey(name: 'discount_amt', fromJson: _toNumNullable)  num? discountAmount, @JsonKey(name: 'total_amt', fromJson: _toNum)  num totalAmount, @JsonKey(name: 'product_image')  String? productImage)  $default,) {final _that = this;
 switch (_that) {
 case _Cart():
-return $default(_that.cartId,_that.productId,_that.productName,_that.productPrice,_that.sellingPrice,_that.discountPercent,_that.discountAmount,_that.totalAmount,_that.productImage,_that.quantity);case _:
+return $default(_that.cartId,_that.productId,_that.productName,_that.productPrice,_that.sellingPrice,_that.quantity,_that.discount,_that.discountAmount,_that.totalAmount,_that.productImage);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -209,10 +209,10 @@ return $default(_that.cartId,_that.productId,_that.productName,_that.productPric
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: "cart_id")  int cartId, @JsonKey(name: "product_id")  int productId, @JsonKey(name: "product_name")  String productName, @JsonKey(name: "product_price")  double productPrice, @JsonKey(name: "selling_price")  double sellingPrice, @JsonKey(name: "discount")  double discountPercent, @JsonKey(name: "discount_amt")  double discountAmount, @JsonKey(name: "total_amt")  double totalAmount, @JsonKey(name: "product_image")  String productImage,  int quantity)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: 'cart_id')  int cartId, @JsonKey(name: 'product_id')  int productId, @JsonKey(name: 'product_name')  String productName, @JsonKey(name: 'product_price', fromJson: _toNum)  num productPrice, @JsonKey(name: 'selling_price', fromJson: _toNum)  num sellingPrice,  int quantity,  String? discount, @JsonKey(name: 'discount_amt', fromJson: _toNumNullable)  num? discountAmount, @JsonKey(name: 'total_amt', fromJson: _toNum)  num totalAmount, @JsonKey(name: 'product_image')  String? productImage)?  $default,) {final _that = this;
 switch (_that) {
 case _Cart() when $default != null:
-return $default(_that.cartId,_that.productId,_that.productName,_that.productPrice,_that.sellingPrice,_that.discountPercent,_that.discountAmount,_that.totalAmount,_that.productImage,_that.quantity);case _:
+return $default(_that.cartId,_that.productId,_that.productName,_that.productPrice,_that.sellingPrice,_that.quantity,_that.discount,_that.discountAmount,_that.totalAmount,_that.productImage);case _:
   return null;
 
 }
@@ -224,19 +224,19 @@ return $default(_that.cartId,_that.productId,_that.productName,_that.productPric
 @JsonSerializable()
 
 class _Cart implements Cart {
-  const _Cart({@JsonKey(name: "cart_id") required this.cartId, @JsonKey(name: "product_id") required this.productId, @JsonKey(name: "product_name") required this.productName, @JsonKey(name: "product_price") required this.productPrice, @JsonKey(name: "selling_price") required this.sellingPrice, @JsonKey(name: "discount") required this.discountPercent, @JsonKey(name: "discount_amt") required this.discountAmount, @JsonKey(name: "total_amt") required this.totalAmount, @JsonKey(name: "product_image") required this.productImage, required this.quantity});
+  const _Cart({@JsonKey(name: 'cart_id') required this.cartId, @JsonKey(name: 'product_id') required this.productId, @JsonKey(name: 'product_name') required this.productName, @JsonKey(name: 'product_price', fromJson: _toNum) required this.productPrice, @JsonKey(name: 'selling_price', fromJson: _toNum) required this.sellingPrice, required this.quantity, this.discount, @JsonKey(name: 'discount_amt', fromJson: _toNumNullable) this.discountAmount, @JsonKey(name: 'total_amt', fromJson: _toNum) required this.totalAmount, @JsonKey(name: 'product_image') this.productImage});
   factory _Cart.fromJson(Map<String, dynamic> json) => _$CartFromJson(json);
 
-@override@JsonKey(name: "cart_id") final  int cartId;
-@override@JsonKey(name: "product_id") final  int productId;
-@override@JsonKey(name: "product_name") final  String productName;
-@override@JsonKey(name: "product_price") final  double productPrice;
-@override@JsonKey(name: "selling_price") final  double sellingPrice;
-@override@JsonKey(name: "discount") final  double discountPercent;
-@override@JsonKey(name: "discount_amt") final  double discountAmount;
-@override@JsonKey(name: "total_amt") final  double totalAmount;
-@override@JsonKey(name: "product_image") final  String productImage;
+@override@JsonKey(name: 'cart_id') final  int cartId;
+@override@JsonKey(name: 'product_id') final  int productId;
+@override@JsonKey(name: 'product_name') final  String productName;
+@override@JsonKey(name: 'product_price', fromJson: _toNum) final  num productPrice;
+@override@JsonKey(name: 'selling_price', fromJson: _toNum) final  num sellingPrice;
 @override final  int quantity;
+@override final  String? discount;
+@override@JsonKey(name: 'discount_amt', fromJson: _toNumNullable) final  num? discountAmount;
+@override@JsonKey(name: 'total_amt', fromJson: _toNum) final  num totalAmount;
+@override@JsonKey(name: 'product_image') final  String? productImage;
 
 /// Create a copy of Cart
 /// with the given fields replaced by the non-null parameter values.
@@ -251,18 +251,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Cart&&(identical(other.cartId, cartId) || other.cartId == cartId)&&(identical(other.productId, productId) || other.productId == productId)&&(identical(other.productName, productName) || other.productName == productName)&&(identical(other.productPrice, productPrice) || other.productPrice == productPrice)&&(identical(other.sellingPrice, sellingPrice) || other.sellingPrice == sellingPrice)&&(identical(other.discountPercent, discountPercent) || other.discountPercent == discountPercent)&&(identical(other.discountAmount, discountAmount) || other.discountAmount == discountAmount)&&(identical(other.totalAmount, totalAmount) || other.totalAmount == totalAmount)&&(identical(other.productImage, productImage) || other.productImage == productImage)&&(identical(other.quantity, quantity) || other.quantity == quantity));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Cart&&(identical(other.cartId, cartId) || other.cartId == cartId)&&(identical(other.productId, productId) || other.productId == productId)&&(identical(other.productName, productName) || other.productName == productName)&&(identical(other.productPrice, productPrice) || other.productPrice == productPrice)&&(identical(other.sellingPrice, sellingPrice) || other.sellingPrice == sellingPrice)&&(identical(other.quantity, quantity) || other.quantity == quantity)&&(identical(other.discount, discount) || other.discount == discount)&&(identical(other.discountAmount, discountAmount) || other.discountAmount == discountAmount)&&(identical(other.totalAmount, totalAmount) || other.totalAmount == totalAmount)&&(identical(other.productImage, productImage) || other.productImage == productImage));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
-    return Object.hash(runtimeType,cartId,productId,productName,productPrice,sellingPrice,discountPercent,discountAmount,totalAmount,productImage,quantity);
+    return Object.hash(runtimeType,cartId,productId,productName,productPrice,sellingPrice,quantity,discount,discountAmount,totalAmount,productImage);
 }
 
 @override
 String toString() {
-    return 'Cart(cartId: $cartId, productId: $productId, productName: $productName, productPrice: $productPrice, sellingPrice: $sellingPrice, discountPercent: $discountPercent, discountAmount: $discountAmount, totalAmount: $totalAmount, productImage: $productImage, quantity: $quantity)';
+    return 'Cart(cartId: $cartId, productId: $productId, productName: $productName, productPrice: $productPrice, sellingPrice: $sellingPrice, quantity: $quantity, discount: $discount, discountAmount: $discountAmount, totalAmount: $totalAmount, productImage: $productImage)';
 }
 
 
@@ -273,7 +273,7 @@ abstract mixin class _$CartCopyWith<$Res> implements $CartCopyWith<$Res> {
   factory _$CartCopyWith(_Cart value, $Res Function(_Cart) _then) = __$CartCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(name: "cart_id") int cartId,@JsonKey(name: "product_id") int productId,@JsonKey(name: "product_name") String productName,@JsonKey(name: "product_price") double productPrice,@JsonKey(name: "selling_price") double sellingPrice,@JsonKey(name: "discount") double discountPercent,@JsonKey(name: "discount_amt") double discountAmount,@JsonKey(name: "total_amt") double totalAmount,@JsonKey(name: "product_image") String productImage, int quantity
+@JsonKey(name: 'cart_id') int cartId,@JsonKey(name: 'product_id') int productId,@JsonKey(name: 'product_name') String productName,@JsonKey(name: 'product_price', fromJson: _toNum) num productPrice,@JsonKey(name: 'selling_price', fromJson: _toNum) num sellingPrice, int quantity, String? discount,@JsonKey(name: 'discount_amt', fromJson: _toNumNullable) num? discountAmount,@JsonKey(name: 'total_amt', fromJson: _toNum) num totalAmount,@JsonKey(name: 'product_image') String? productImage
 });
 
 
@@ -290,19 +290,19 @@ class __$CartCopyWithImpl<$Res>
 
 /// Create a copy of Cart
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? cartId = null,Object? productId = null,Object? productName = null,Object? productPrice = null,Object? sellingPrice = null,Object? discountPercent = null,Object? discountAmount = null,Object? totalAmount = null,Object? productImage = null,Object? quantity = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? cartId = null,Object? productId = null,Object? productName = null,Object? productPrice = null,Object? sellingPrice = null,Object? quantity = null,Object? discount = freezed,Object? discountAmount = freezed,Object? totalAmount = null,Object? productImage = freezed,}) {
   return _then(_Cart(
 cartId: null == cartId ? _self.cartId : cartId // ignore: cast_nullable_to_non_nullable
 as int,productId: null == productId ? _self.productId : productId // ignore: cast_nullable_to_non_nullable
 as int,productName: null == productName ? _self.productName : productName // ignore: cast_nullable_to_non_nullable
 as String,productPrice: null == productPrice ? _self.productPrice : productPrice // ignore: cast_nullable_to_non_nullable
-as double,sellingPrice: null == sellingPrice ? _self.sellingPrice : sellingPrice // ignore: cast_nullable_to_non_nullable
-as double,discountPercent: null == discountPercent ? _self.discountPercent : discountPercent // ignore: cast_nullable_to_non_nullable
-as double,discountAmount: null == discountAmount ? _self.discountAmount : discountAmount // ignore: cast_nullable_to_non_nullable
-as double,totalAmount: null == totalAmount ? _self.totalAmount : totalAmount // ignore: cast_nullable_to_non_nullable
-as double,productImage: null == productImage ? _self.productImage : productImage // ignore: cast_nullable_to_non_nullable
-as String,quantity: null == quantity ? _self.quantity : quantity // ignore: cast_nullable_to_non_nullable
-as int,
+as num,sellingPrice: null == sellingPrice ? _self.sellingPrice : sellingPrice // ignore: cast_nullable_to_non_nullable
+as num,quantity: null == quantity ? _self.quantity : quantity // ignore: cast_nullable_to_non_nullable
+as int,discount: freezed == discount ? _self.discount : discount // ignore: cast_nullable_to_non_nullable
+as String?,discountAmount: freezed == discountAmount ? _self.discountAmount : discountAmount // ignore: cast_nullable_to_non_nullable
+as num?,totalAmount: null == totalAmount ? _self.totalAmount : totalAmount // ignore: cast_nullable_to_non_nullable
+as num,productImage: freezed == productImage ? _self.productImage : productImage // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 

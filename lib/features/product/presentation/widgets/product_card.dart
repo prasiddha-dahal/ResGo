@@ -1,26 +1,27 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:resgo/core/router/app_routes.dart';
 import 'package:resgo/core/theme/app_colors.dart';
 import 'package:resgo/core/theme/app_dimensions.dart';
 import 'package:resgo/core/theme/app_text_styles.dart';
+import 'package:resgo/features/cart/presentation/providers/cart_controller.dart';
 import 'package:resgo/features/product/data/models/product/product.dart';
+import 'package:top_snackbar_flutter/custom_snack_bar.dart';
+import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
-class ProductCard extends StatefulWidget {
+class ProductCard extends ConsumerStatefulWidget {
   final Product product;
   final double? width;
 
-  const ProductCard({
-    super.key,
-    required this.product,
-    this.width,
-  });
+  const ProductCard({super.key, required this.product, this.width});
 
   @override
-  State<ProductCard> createState() => _ProductCardState();
+  ConsumerState<ProductCard> createState() => _ProductCardState();
 }
 
-class _ProductCardState extends State<ProductCard> {
+class _ProductCardState extends ConsumerState<ProductCard> {
   bool isFavourite = false;
 
   @override
@@ -39,17 +40,12 @@ class _ProductCardState extends State<ProductCard> {
           borderRadius: BorderRadius.circular(AppDimensions.radiusMd),
           onTap: () => context.pushNamed(
             'productDetail',
-            pathParameters: {
-              'id': widget.product.id.toString(),
-            },
+            pathParameters: {'id': widget.product.id.toString()},
           ),
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(AppDimensions.radiusMd),
-              border: Border.all(
-                color: AppColors.border,
-                width: 0.6,
-              ),
+              border: Border.all(color: AppColors.border, width: 0.6),
               boxShadow: [
                 BoxShadow(
                   color: Colors.black.withValues(alpha: 0.04),
@@ -150,9 +146,7 @@ class _ProductCardState extends State<ProductCard> {
 
                 // Product Information
                 Padding(
-                  padding: const EdgeInsets.all(
-                    AppDimensions.sm + 2,
-                  ),
+                  padding: const EdgeInsets.all(AppDimensions.sm + 2),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -188,9 +182,7 @@ class _ProductCardState extends State<ProductCard> {
                         children: [
                           Text(
                             'Rs. ${widget.product.discountPrice.toStringAsFixed(0)}',
-                            style: AppTextStyles.price.copyWith(
-                              fontSize: 16,
-                            ),
+                            style: AppTextStyles.price.copyWith(fontSize: 16),
                           ),
 
                           if (hasDiscount) ...[
@@ -217,8 +209,30 @@ class _ProductCardState extends State<ProductCard> {
                         width: double.infinity,
                         height: 38,
                         child: ElevatedButton.icon(
-                          onPressed: () {
-                            // TODO: Add to cart
+                          onPressed: () async {
+                            try {
+                              await ref
+                                  .read(cartControllerProvider.notifier)
+                                  .addToCart(
+                                    productId: widget.product.id,
+                                    quantity: 1,
+                                  );
+                              if (context.mounted) {
+                                showTopSnackBar(
+                                  Overlay.of(context),
+                                  CustomSnackBar.success(
+                                    message: "Added to cart",
+                                  ),
+                                );
+                              }
+                            } catch (e) {
+                              if (context.mounted) {
+                                showTopSnackBar(
+                                  Overlay.of(context),
+                                  CustomSnackBar.error(message: e.toString()),
+                                );
+                              }
+                            }
                           },
                           icon: const Icon(
                             Icons.add_shopping_cart_outlined,
@@ -226,9 +240,7 @@ class _ProductCardState extends State<ProductCard> {
                           ),
                           label: const Text('Add to Cart'),
                           style: ElevatedButton.styleFrom(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 8,
-                            ),
+                            padding: const EdgeInsets.symmetric(horizontal: 8),
                             textStyle: AppTextStyles.bodySmall.copyWith(
                               fontWeight: FontWeight.w700,
                             ),

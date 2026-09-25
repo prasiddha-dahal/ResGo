@@ -2,13 +2,18 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:resgo/core/router/app_routes.dart';
 import 'package:resgo/core/theme/app_colors.dart';
 import 'package:resgo/core/theme/app_dimensions.dart';
 import 'package:resgo/core/theme/app_text_styles.dart';
+import 'package:resgo/features/cart/presentation/providers/cart_controller.dart';
 import 'package:resgo/features/product/presentation/providers/product_controller.dart';
 import 'package:resgo/features/product/presentation/widgets/section_error.dart';
 import 'package:resgo/features/product/presentation/widgets/section_loading.dart';
+import 'package:top_snackbar_flutter/custom_snack_bar.dart';
+import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 class ProductDetailScreen extends ConsumerStatefulWidget {
   final int productId;
@@ -350,8 +355,23 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
                     child: SizedBox(
                       height: AppDimensions.buttonHeight,
                       child: ElevatedButton.icon(
-                        onPressed: () {
-                          // TODO: add product to cart
+                        onPressed: () async {
+                          await ref
+                              .read(cartControllerProvider.notifier)
+                              .addToCart(
+                                productId: product.id,
+                                quantity: quantity,
+                              );
+
+                          if (!context.mounted) return;
+
+                          showTopSnackBar(
+                            Overlay.of(context),
+                            CustomSnackBar.success(
+                              message: "Item added to cart",
+                            ),
+                          );
+                          context.go(AppRoutes.home);
                         },
                         icon: const Icon(Icons.shopping_cart_outlined),
                         label: const Text('Add to Cart'),
