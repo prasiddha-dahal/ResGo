@@ -308,10 +308,10 @@ class HomeScreen extends ConsumerWidget {
                       },
 
                       options: CarouselOptions(
-                        height: 260,
-                        viewportFraction: 0.78,
+                        height: 200,
+                        viewportFraction: 0.60,
                         enlargeCenterPage: true,
-                        enlargeFactor: 0.12,
+                        enlargeFactor: 0.3,
                         autoPlay: products.length > 1,
                         autoPlayInterval: const Duration(seconds: 3),
                         autoPlayAnimationDuration: const Duration(
