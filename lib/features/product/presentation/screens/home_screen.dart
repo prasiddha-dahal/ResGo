@@ -1,3 +1,4 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +8,7 @@ import 'package:resgo/core/router/app_routes.dart';
 import 'package:resgo/core/theme/app_colors.dart';
 import 'package:resgo/core/theme/app_dimensions.dart';
 import 'package:resgo/core/theme/app_text_styles.dart';
+import 'package:resgo/features/auth/presentation/providers/auth_controller.dart';
 import 'package:resgo/features/product/presentation/providers/product_controller.dart';
 import 'package:resgo/features/product/presentation/widgets/product_card.dart';
 import 'package:resgo/features/product/presentation/widgets/product_grid_loading.dart';
@@ -34,6 +36,24 @@ class HomeScreen extends ConsumerWidget {
             icon: const Icon(Icons.shopping_cart_outlined),
             color: AppColors.textPrimary,
             onPressed: () => context.push(AppRoutes.cart),
+          ),
+          IconButton(
+            icon: const Icon(Icons.logout),
+            color: AppColors.textPrimary,
+            onPressed: () {
+              AwesomeDialog(
+                context: context,
+                dialogType: DialogType.warning,
+                title: 'Logout',
+                desc: 'Are you sure you want to logout?',
+                btnCancelOnPress: () {},
+                btnOkText: 'Logout',
+                btnOkOnPress: () async {
+                  await ref.read(authControllerProvider.notifier).logout();
+                  if (context.mounted) context.go(AppRoutes.login);
+                },
+              ).show();
+            },
           ),
         ],
       ),
