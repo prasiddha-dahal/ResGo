@@ -218,16 +218,3 @@ feature/
 | POST   | `/order`              | Place order (multipart)    |
 | PATCH  | `/order/{id}`         | Cancel / update order      |
 
----
-
-## Assumptions Made
-
-- Backend API is provided and reachable during development
-- User credentials are required for cart, checkout, and orders
-- Some API responses use inconsistent key names (e.g. `"sucess"`, `"order id"`) and are handled in models/repositories
-- `total_amt` and similar fields may arrive as String or num; models convert safely
-- Order placement requires a payment receipt image (`multipart/form-data`)
-- Cart is cleared client-side by deleting each item after a successful order
-- Language support is implemented as a working demo on the Login screen, not full app-wide translation
-- Temporary backend downtime may affect live login and API testing
-```
