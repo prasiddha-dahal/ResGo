@@ -8,6 +8,7 @@ import 'package:resgo/core/network/auth_interceptor.dart';
 import 'package:resgo/core/network/network_info.dart';
 import 'package:resgo/core/session/session_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter/material.dart';
 
 /// ─────────────────────────────────────────────────────────────
 /// CORE PROVIDERS
@@ -76,3 +77,5 @@ final sessionServiceProvider = FutureProvider<SessionService>((ref) async {
   final prefs = await ref.watch(sharedPreferencesProvider.future);
   return SessionService(prefs);
 });
+
+final localeProvider = StateProvider<Locale>((ref) => const Locale('en'));

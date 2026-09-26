@@ -1,0 +1,16 @@
+{
+  "@@locale": "ne",
+  "welcomeBack": "फेरि स्वागत छ",
+  "loginSubtitle": "किनमेल जारी राख्न लगइन गर्नुहोस्",
+  "email": "इमेल",
+  "emailHint": "आफ्नो इमेल लेख्नुहोस्",
+  "password": "पासवर्ड",
+  "passwordHint": "आफ्नो पासवर्ड लेख्नुहोस्",
+  "login": "लगइन",
+  "noAccount": "खाता छैन?",
+  "register": "दर्ता गर्नुहोस्",
+  "emailRequired": "इमेल आवश्यक छ",
+  "emailInvalid": "मान्य इमेल लेख्नुहोस्",
+  "passwordRequired": "पासवर्ड आवश्यक छ",
+  "passwordMinLength": "पासवर्ड कम्तीमा ६ अक्षरको हुनुपर्छ"
+}

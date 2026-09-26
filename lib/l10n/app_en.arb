@@ -1,0 +1,16 @@
+{
+  "@@locale": "en",
+  "welcomeBack": "Welcome back",
+  "loginSubtitle": "Login to continue shopping",
+  "email": "Email",
+  "emailHint": "Enter your email",
+  "password": "Password",
+  "passwordHint": "Enter your password",
+  "login": "Login",
+  "noAccount": "Don't have an account?",
+  "register": "Register",
+  "emailRequired": "Email is required",
+  "emailInvalid": "Enter a valid email",
+  "passwordRequired": "Password is required",
+  "passwordMinLength": "Password must be at least 6 characters"
+}
