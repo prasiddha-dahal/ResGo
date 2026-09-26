@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:go_transitions/go_transitions.dart';
 import 'package:resgo/core/router/app_routes.dart';
 import 'package:resgo/features/auth/presentation/screens/login_screen.dart';
 import 'package:resgo/features/auth/presentation/screens/register_screen.dart';
@@ -25,33 +26,37 @@ class PlaceholderScreen extends StatelessWidget {
 final appRouter = GoRouter(
   initialLocation: AppRoutes.splash,
   routes: [
-    GoRoute(
-      path: AppRoutes.splash,
-      builder: (context, state) => const SplashScreen(),
-    ),
+    GoRoute(path: AppRoutes.splash),
     GoRoute(
       path: AppRoutes.login,
-      builder: (context, state) => const LoginScreen(),
+      pageBuilder: GoTransitions.slide.toRight.build(
+        child: const LoginScreen(),
+      ),
     ),
     GoRoute(
       path: AppRoutes.register,
-      builder: (context, state) => const RegisterScreen(),
+      pageBuilder: GoTransitions.slide.toLeft.build(
+        child: const RegisterScreen(),
+      ),
     ),
     GoRoute(
       path: AppRoutes.home,
-      builder: (context, state) => const HomeScreen(),
+      pageBuilder: GoTransitions.fade.build(child: const HomeScreen()),
     ),
     GoRoute(
       name: 'productDetail',
       path: AppRoutes.productDetail,
-      builder: (context, state) {
+      pageBuilder: (context, state) {
         final id = int.tryParse(state.pathParameters['id'] ?? '') ?? 0;
-        return ProductDetailScreen(productId: id);
+
+        return GoTransitions.slide.toRight.build(
+          child: ProductDetailScreen(productId: id),
+        )(context, state);
       },
     ),
     GoRoute(
       path: AppRoutes.cart,
-      builder: (context, state) => const CartScreen(),
+      pageBuilder: GoTransitions.fade.build(child: const CartScreen()),
     ),
     GoRoute(
       path: AppRoutes.orders,
