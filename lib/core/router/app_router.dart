@@ -5,6 +5,8 @@ import 'package:resgo/core/router/app_routes.dart';
 import 'package:resgo/features/auth/presentation/screens/login_screen.dart';
 import 'package:resgo/features/auth/presentation/screens/register_screen.dart';
 import 'package:resgo/features/cart/presentation/screens/cart_screen.dart';
+import 'package:resgo/features/order/presentation/screens/checkout_screen.dart';
+import 'package:resgo/features/order/presentation/screens/orders_screen.dart';
 import 'package:resgo/features/product/presentation/screens/home_screen.dart';
 import 'package:resgo/features/product/presentation/screens/product_detail_screen.dart';
 import 'package:resgo/features/splash/presentation/screen/splash_screen.dart';
@@ -26,7 +28,10 @@ class PlaceholderScreen extends StatelessWidget {
 final appRouter = GoRouter(
   initialLocation: AppRoutes.splash,
   routes: [
-    GoRoute(path: AppRoutes.splash),
+    GoRoute(
+      path: AppRoutes.splash,
+      builder: (context, state) => const SplashScreen(),
+    ),
     GoRoute(
       path: AppRoutes.login,
       pageBuilder: GoTransitions.slide.toRight.build(
@@ -49,7 +54,7 @@ final appRouter = GoRouter(
       pageBuilder: (context, state) {
         final id = int.tryParse(state.pathParameters['id'] ?? '') ?? 0;
 
-        return GoTransitions.slide.toRight.build(
+        return GoTransitions.slide.toLeft.build(
           child: ProductDetailScreen(productId: id),
         )(context, state);
       },
@@ -60,11 +65,13 @@ final appRouter = GoRouter(
     ),
     GoRoute(
       path: AppRoutes.orders,
-      builder: (context, state) => const PlaceholderScreen(title: 'Orders'),
+      builder: (context, state) => const OrdersScreen(),
     ),
+
     GoRoute(
-      path: AppRoutes.profile,
-      builder: (context, state) => const PlaceholderScreen(title: 'Profile'),
+      path: AppRoutes.checkout,
+      builder: (context, state) => const CheckoutScreen(),
     ),
+   
   ],
 );

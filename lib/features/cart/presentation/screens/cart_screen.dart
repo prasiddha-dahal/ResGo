@@ -1,6 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import 'package:resgo/core/router/app_routes.dart';
 import 'package:resgo/core/theme/app_colors.dart';
 import 'package:resgo/core/theme/app_dimensions.dart';
 import 'package:resgo/core/theme/app_text_styles.dart';
@@ -95,7 +97,7 @@ class CartScreen extends ConsumerWidget {
                       height: AppDimensions.buttonHeight,
                       child: ElevatedButton(
                         onPressed: () {
-                          // TODO: go to checkout
+                          context.push(AppRoutes.checkout);
                         },
                         child: const Text('Proceed to Checkout'),
                       ),

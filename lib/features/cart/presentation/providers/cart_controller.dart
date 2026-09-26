@@ -60,6 +60,19 @@ class CartController extends AsyncNotifier<List<Cart>> {
 
     result.fold((error) => throw error, (_) => refresh());
   }
+
+  Future<void> clearCart() async {
+    final items = state.asData?.value ?? [];
+    if (items.isEmpty) return;
+
+    final repo = ref.read(cartRepositoryProvider);
+
+    for (final item in items) {
+      await repo.deleteCartItem(cartId: item.cartId);
+    }
+
+    await refresh();
+  }
 }
 
 final cartControllerProvider =

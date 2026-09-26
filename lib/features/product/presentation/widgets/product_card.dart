@@ -220,6 +220,7 @@ class _ProductCardState extends ConsumerState<ProductCard> {
                               if (context.mounted) {
                                 showTopSnackBar(
                                   Overlay.of(context),
+                                  displayDuration: Duration(milliseconds: 300),
                                   CustomSnackBar.success(
                                     message: "Added to cart",
                                   ),

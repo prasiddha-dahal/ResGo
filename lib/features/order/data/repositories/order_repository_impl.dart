@@ -53,7 +53,7 @@ class OrderRepositoryImpl extends BaseRemoteSource implements OrderRepoistory {
           return <OrderModel>[];
         }
 
-        final orderList = (data["orders"] as List<OrderModel>?) ?? [];
+        final orderList = (data['orders'] as List<dynamic>?) ?? [];
         return orderList
             .map((order) => OrderModel.fromJson(order as Map<String, dynamic>))
             .toList();
@@ -81,7 +81,7 @@ class OrderRepositoryImpl extends BaseRemoteSource implements OrderRepoistory {
           ),
         });
 
-        await dio.post(ApiEndpoints.orders, data: formData);
+        await dio.post(ApiEndpoints.order, data: formData);
       });
       return right(null);
     } on AppError catch (e) {
